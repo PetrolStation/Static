@@ -5,13 +5,10 @@
 #include <memory>
 
 #include "Core/DebugTools.h"
-
-#include <Static/Components/Transform.h>
-#include <Static/Components/Mesh.h>
-#include <Static/Components/Camera.h>
-
-#include "Static/Renderer/Text.h"
-
+#include <Core/Components/Transform.h>
+#include <Core/Components/Mesh.h>
+#include <Core/Components/Camera.h>
+#include <Freetype/Renderer/Text.h>
 #include "Core/Renderer/RendererResourceCreator.h"
 
 // abstract classes
