@@ -99,6 +99,9 @@ namespace PetrolEngine {
 
         static int  init    (bool debug) { return renderer->init(debug); };
         static void setViewport(int x, int y, int width, int height) { return renderer->setViewport(x, y, width, height); };
+		static void drawQuad2D(const Texture* texture, const Transform* transform, Shader* shader, const Camera* camera, glm::vec4 texCoords = {0,0,1,1}){
+		    renderer->drawQuad2D(texture, transform, shader, camera, texCoords);
+		}
         static void renderMesh (Mesh& mesh, Transform& transform) {
             auto vao = mesh.getVertexArray();
             Vector<const Texture*> textures;
