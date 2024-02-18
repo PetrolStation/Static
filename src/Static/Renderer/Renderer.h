@@ -126,15 +126,18 @@ namespace PetrolEngine {
                         TextureFormat::RED,
                         TextureType::Texture2D
                 );
-
                 rendererResources->fonts[font]->updateTextureImage(atlas->atlas->getData());
+                //rendererResources->fonts[font] = Renderer::createTexture("resources/enemy.png");
             }
 
+            /*auto shader = Renderer::loadShader( "textShader",
+                    ReadFile("resources/textShader.vert"),
+                    ReadFile("resources/textShader.frag")
+            );*/
             auto shader = Renderer::loadShader( "textShader",
-                    ReadFile("../Hei/Resources/Shaders/textShader.vert"),
-                    ReadFile("../Hei/Resources/Shaders/textShader.frag")
+          ReadFile("/home/samuel/Desktop/projects/EnchantedRealms/EnchantedRealms/resources/textShader.vert"),
+          ReadFile("/home/samuel/Desktop/projects/EnchantedRealms/EnchantedRealms/resources/textShader.frag")
             );
-
             return renderer->renderText(text, transform, rendererResources->fonts[font].get(), atlas, shader.get(), camera);
         };
 
