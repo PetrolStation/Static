@@ -135,8 +135,8 @@ namespace PetrolEngine {
                     ReadFile("resources/textShader.frag")
             );*/
             auto shader = Renderer::loadShader( "textShader",
-          ReadFile("/home/samuel/Desktop/projects/EnchantedRealms/EnchantedRealms/resources/textShader.vert"),
-          ReadFile("/home/samuel/Desktop/projects/EnchantedRealms/EnchantedRealms/resources/textShader.frag")
+          ReadFile("Resources/Shaders/textShader.vert"),
+          ReadFile("Resources/Shaders/textShader.frag")
             );
             return renderer->renderText(text, transform, rendererResources->fonts[font].get(), atlas, shader.get(), camera);
         };

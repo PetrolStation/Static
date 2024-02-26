@@ -27,7 +27,9 @@ namespace PetrolEngine {
 
         static int  init(int width, int height, const String& title){
             window = creator->newWindow(width, height, title);
-            return window->init();
+            auto err = window->init();
+            i_window = window->i_window;
+            return err;
         };
 
 		static Ref<WindowApi> create(int width, int height, const String& title);
@@ -60,5 +62,6 @@ namespace PetrolEngine {
 
         static WRC* creator;
         static WindowApi* window;
+        static void* i_window;
 	};
 }

@@ -12,6 +12,7 @@ namespace PetrolEngine {
 
     WRC* Window::creator;
     WindowApi* Window::window;
+    void* Window::i_window;
 
     Ref<WindowApi> Window::create(int width, int height, const String& title) {
         return Ref<WindowApi>(creator->newWindow(width, height, title));
