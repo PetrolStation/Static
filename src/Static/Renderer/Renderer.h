@@ -42,39 +42,39 @@ namespace PetrolEngine {
 
 
         // framebuffer
-        static     Framebuffer*    newFramebuffer(const FramebufferSpecification& spec) { return         creator->newFramebuffer(spec) ; }
-        static Ref<Framebuffer> createFramebuffer(const FramebufferSpecification& spec) { return Ref<Framebuffer>(newFramebuffer(spec)); }
+        static     Framebuffer*    newFramebuffer(const FramebufferSpecification& spec) { LOG_FUNCTION(); return         creator->newFramebuffer(spec) ; }
+        static Ref<Framebuffer> createFramebuffer(const FramebufferSpecification& spec) { LOG_FUNCTION(); return Ref<Framebuffer>(newFramebuffer(spec)); }
 
         // texture
-        static Texture* newTexture(const String& path) { return creator->newTexture(Image(path)); }
-        static Texture* newTexture(const Image& image) { return creator->newTexture(image); }
-        static Texture* newTexture(int width, int height, TextureFormat format, TextureType type = TextureType::Texture2D) { return creator->newTexture(width, height, format, type); }
+        static Texture* newTexture(const String& path) { LOG_FUNCTION(); return creator->newTexture(Image(path)); }
+        static Texture* newTexture(const Image& image) { LOG_FUNCTION(); return creator->newTexture(image); }
+        static Texture* newTexture(int width, int height, TextureFormat format, TextureType type = TextureType::Texture2D) { LOG_FUNCTION(); return creator->newTexture(width, height, format, type); }
 
-        static Ref<Texture> createTexture(const String& path){ return Ref<Texture>(newTexture(path)); }
-        static Ref<Texture> createTexture(const Image& image){ return Ref<Texture>(newTexture(image)); }
-        static Ref<Texture> createTexture(int width, int height, TextureFormat format, TextureType type = TextureType::Texture2D){ return Ref<Texture>(newTexture(width, height, format, type)); }
+        static Ref<Texture> createTexture(const String& path){ LOG_FUNCTION(); return Ref<Texture>(newTexture(path)); }
+        static Ref<Texture> createTexture(const Image& image){ LOG_FUNCTION(); return Ref<Texture>(newTexture(image)); }
+        static Ref<Texture> createTexture(int width, int height, TextureFormat format, TextureType type = TextureType::Texture2D){ LOG_FUNCTION(); return Ref<Texture>(newTexture(width, height, format, type)); }
 
         // Vertex array
-        static     VertexArray*    newVertexArray() { return         creator->newVertexArray() ; }
-        static Ref<VertexArray> createVertexArray() { return Ref<VertexArray>(newVertexArray()); }
+        static     VertexArray*    newVertexArray() { LOG_FUNCTION(); return         creator->newVertexArray() ; }
+        static Ref<VertexArray> createVertexArray() { LOG_FUNCTION(); return Ref<VertexArray>(newVertexArray()); }
 
         // Vertex buffer
-        static     VertexBuffer*    newVertexBuffer(VertexLayout layout) { return          creator->newVertexBuffer(layout) ; }
-        static Ref<VertexBuffer> createVertexBuffer(VertexLayout layout) { return Ref<VertexBuffer>(newVertexBuffer(layout)); }
+        static     VertexBuffer*    newVertexBuffer(VertexLayout layout) { LOG_FUNCTION(); return          creator->newVertexBuffer(layout) ; }
+        static Ref<VertexBuffer> createVertexBuffer(VertexLayout layout) { LOG_FUNCTION(); return Ref<VertexBuffer>(newVertexBuffer(layout)); }
 
-        static     VertexBuffer*    newVertexBuffer(VertexLayout layout, const void* data, int64 size) { return          creator->newVertexBuffer(layout, data, size) ; }
-        static Ref<VertexBuffer> createVertexBuffer(VertexLayout layout, const void* data, int64 size) { return Ref<VertexBuffer>(newVertexBuffer(layout, data, size)); }
+        static     VertexBuffer*    newVertexBuffer(VertexLayout layout, const void* data, int64 size) { LOG_FUNCTION(); return          creator->newVertexBuffer(layout, data, size) ; }
+        static Ref<VertexBuffer> createVertexBuffer(VertexLayout layout, const void* data, int64 size) { LOG_FUNCTION(); return Ref<VertexBuffer>(newVertexBuffer(layout, data, size)); }
 
         // index buffer
-        static     IndexBuffer*    newIndexBuffer(const void* data, int64 size) { return         creator->newIndexBuffer(data, size) ; }
-        static Ref<IndexBuffer> createIndexBuffer(const void* data, int64 size) { return Ref<IndexBuffer>(newIndexBuffer(data, size)); }
+        static     IndexBuffer*    newIndexBuffer(const void* data, int64 size) { LOG_FUNCTION(); return         creator->newIndexBuffer(data, size) ; }
+        static Ref<IndexBuffer> createIndexBuffer(const void* data, int64 size) { LOG_FUNCTION(); return Ref<IndexBuffer>(newIndexBuffer(data, size)); }
 
-        static     IndexBuffer*    newIndexBuffer() { return         creator->newIndexBuffer() ; }
-        static Ref<IndexBuffer> createIndexBuffer() { return Ref<IndexBuffer>(newIndexBuffer()); }
+        static     IndexBuffer*    newIndexBuffer() { LOG_FUNCTION(); return         creator->newIndexBuffer() ; }
+        static Ref<IndexBuffer> createIndexBuffer() { LOG_FUNCTION(); return Ref<IndexBuffer>(newIndexBuffer()); }
 
         // graphics context
-        static     GraphicsContext*    newGraphicsContext(){ return             creator->newGraphicsContext() ; }
-        static Ref<GraphicsContext> createGraphicsContext(){ return Ref<GraphicsContext>(newGraphicsContext()); }
+        static     GraphicsContext*    newGraphicsContext(){ LOG_FUNCTION(); return             creator->newGraphicsContext() ; }
+        static Ref<GraphicsContext> createGraphicsContext(){ LOG_FUNCTION(); return Ref<GraphicsContext>(newGraphicsContext()); }
 
         // shader
         static Shader* newShader(const String&           name,
@@ -97,12 +97,12 @@ namespace PetrolEngine {
                                       const String& fragmentSrc,
                                       const String& geometrySrc = "" );
 
-        static int  init    (bool debug) { return renderer->init(debug); };
-        static void setViewport(int x, int y, int width, int height) { return renderer->setViewport(x, y, width, height); };
-		static void drawQuad2D(const Texture* texture, const Transform* transform, Shader* shader, const Camera* camera, glm::vec4 texCoords = {0,0,1,1}){
+        static int  init    (bool debug) { LOG_FUNCTION(); return renderer->init(debug); };
+        static void setViewport(int x, int y, int width, int height) { LOG_FUNCTION(); return renderer->setViewport(x, y, width, height); };
+		static void drawQuad2D(const Texture* texture, const Transform* transform, Shader* shader, const Camera* camera, glm::vec4 texCoords = {0,0,1,1}){ LOG_FUNCTION();
 		    renderer->drawQuad2D(texture, transform, shader, camera, texCoords);
 		}
-        static void renderMesh (Mesh& mesh, Transform& transform) {
+        static void renderMesh (Mesh& mesh, Transform& transform) { LOG_FUNCTION();
             auto vao = mesh.getVertexArray();
             Vector<const Texture*> textures;
 
@@ -113,7 +113,7 @@ namespace PetrolEngine {
             return renderer->renderMesh(vao.get(), transform, textures, mesh.meshRenderer->material.shader.get(), camera);
         }
 
-        static void renderText(const String& text, const Transform& transform, const String& font) {
+        static void renderText(const String& text, const Transform& transform, const String& font) { LOG_FUNCTION();
             Material fontMaterial;
             Text::FontAtlas* atlas = &Text::getAtlas(font);
 
@@ -140,10 +140,11 @@ namespace PetrolEngine {
             );
             return renderer->renderText(text, transform, rendererResources->fonts[font].get(), atlas, shader.get(), camera);
         };
-
-        static void clear() { return renderer->clear(); };
-        static void getDeviceConstantValue(DeviceConstant deviceConstant, void* outputBuffer) { return renderer->getDeviceConstantValue(deviceConstant, outputBuffer); };
-        static void renderFramebuffer(const Ref<Framebuffer> framebuffer, const Ref<Shader> shader) {
+        
+        static void draw() {renderer->draw();}
+        static void clear() { LOG_FUNCTION(); return renderer->clear(); };
+        static void getDeviceConstantValue(DeviceConstant deviceConstant, void* outputBuffer) { LOG_FUNCTION(); return renderer->getDeviceConstantValue(deviceConstant, outputBuffer); };
+        static void renderFramebuffer(const Ref<Framebuffer> framebuffer, const Ref<Shader> shader) { LOG_FUNCTION();
             const Vector<Vertex> planeVertices = {
                     // pos        // tex
                     Vertex({-1.0f, -1.0f, 0.0f}, {0.0f, 0.0f}),

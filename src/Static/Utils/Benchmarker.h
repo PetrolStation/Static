@@ -3,15 +3,12 @@
 #include <Core/Aliases.h>
 #include <vector>
 #include <chrono>
-/*
-#if defined(__linux__)
+
+#if defined(__IS_LINUX__)
 #    define BM_CLOCK std::chrono::system_clock
-#else
+#elif defined(__IS_WINDOWS__)
 #    define BM_CLOCK std::chrono::steady_clock
 #endif
-*/
-#define BM_CLOCK std::chrono::system_clock
-//#    define BM_CLOCK std::chrono::steady_clock
 
 namespace PetrolEngine{
 
