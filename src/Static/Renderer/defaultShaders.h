@@ -209,4 +209,49 @@ void main() {
     //color = vec4(texture(text, TexCoords).r);
 }
 )"""";
+
+static const String animationVS = R""""(
+#version 450 core
+
+layout(location = 0) in vec3 pos;
+layout(location = 2) in vec2 tex;
+layout(location = 1) in vec3 norm;
+layout(location = 5) in ivec4 boneIds; 
+layout(location = 6) in vec4 weights;
+
+
+layout (binding = 0) uniform View{
+    mat4 model;
+    mat4 projection;
+    mat4 view;
+} v;
+
+const int MAX_BONES = 100;
+const int MAX_BONE_INFLUENCE = 4;
+uniform mat4 finalBonesMatrices[MAX_BONES];
+	
+out vec2 TexCoords;
+	
+void main()
+{
+    vec4 totalPosition = vec4(0.0f);
+    for(int i = 0 ; i < MAX_BONE_INFLUENCE ; i++)
+    {
+        if(boneIds[i] == -1) 
+            continue;
+        if(boneIds[i] >=MAX_BONES) 
+        {
+            totalPosition = vec4(pos,1.0f);
+            break;
+        }
+        vec4 localPosition = finalBonesMatrices[boneIds[i]] * vec4(pos,1.0f);
+        totalPosition += localPosition * weights[i];
+        vec3 localNormal = mat3(finalBonesMatrices[boneIds[i]]) * norm;
+    }
+		
+    mat4 viewModel = v.view * v.model;
+    gl_Position =  v.projection * viewModel * totalPosition;
+    TexCoords = tex;
+}
+)"""";
 namespace_PetrolEngine_end
